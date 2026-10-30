@@ -18,7 +18,11 @@ connectDB();
 
 const app = express();
 const aiRoutes = require("./routes/aiRoutes");
-app.use(cors());
+app.use(cors({
+  origin: "https://crime-record-management-ebon.vercel.app",
+  methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"]
+}));
 app.use(express.json());
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
